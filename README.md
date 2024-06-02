@@ -21,3 +21,6 @@ V0.74
 
 V0.75
 - Enhanced search feature, allows | operator for OR search. And excluding condition is added.
+
+V0.80
+- Search feature added for JAV star name from web
