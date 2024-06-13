@@ -57,3 +57,6 @@ V0.882
 - Added: Support for Caribbeancom-100000-000
 - Added: prod_code is auto generated for videos without prod_code in its file name.
 - Fixed: Rating changes not properly performed sometimes.
+
+V0.883
+- Fixed: Some image (RGBA) couldn't be cropped and stop functioning in scan poster.
