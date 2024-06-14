@@ -1,4 +1,4 @@
-# JAV Catalog Manager V0.882, UI in Korean
+"""# JAV Catalog Manager V0.884, UI in Korean
 This Python program makes a list of JAV (Japanese Adult Video) files on local hard drives.
 It lets users search video files, play them, and get JAV title information
 (poster images and star name) from the Internet.
@@ -58,5 +58,8 @@ V0.882
 - Added: prod_code is auto generated for videos without prod_code in its file name.
 - Fixed: Rating changes not properly performed sometimes.
 
-V0.883
+V0.883: Released.
 - Fixed: Some image (RGBA) couldn't be cropped and stop functioning in scan poster.
+
+V0.884
+- Enhanced: Data cards loading time is shortened, consuming less memory.
