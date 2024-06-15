@@ -1,69 +1,72 @@
-# JAV Catalog Manager V0.885, UI in Korean
-This Python program makes a list of JAV (Japanese Adult Video) files on local hard drives.
-It lets users search video files, play them, and get JAV title information
-(poster images and star name) from the Internet.
-이 Python 프로그램은 로컬 하드 드라이브에 있는 JAV(일본 성인 비디오) 파일의 목록을 만듭니다.
-사용자는 영상 검색, 영상 재생, 인터넷에서 JAV 타이틀 정보(포스터 이미지 및 출연자 정보)를 가져올 수 있습니다.
+# JAV Catalog Manager V0.886, UI in Korean This Python program creates a list of JAV (Japanese Adult Video) files on
+local hard drives. It allows users to search for video files, play them, and retrieve JAV title information (poster
+images and star names) from the Internet.
+이 Python 프로그램은 로컬 하드 드라이브에 있는 JAV(일본 성인 비디오) 파일 목록을 생성합니다. 사용자는 영상 검색,
+영상 재생, 인터넷에서 JAV 타이틀 정보(포스터 이미지 및 출연자 이름)를 가져올 수 있습니다.
 
 V0.7
 - Initial creation
 
 V0.73
-- Upgraded: Scan folder feature
-- Added: Sort feature
+- Upgraded: Folder scanning feature
+- Added: Sorting feature
 
 V0.74
-- Added: Event logger which can log errors or process status.
+- Added: Event logger for logging errors and process statuses
 
 V0.75
-- Upgraded: Search feature now allows | operator for OR search. And excluding condition is added.
+- Upgraded: Enhanced search feature with OR search using the | operator, and added exclusion conditions
 
 V0.80
-- Added: Search for JAV star name from web.
+- Added: Ability to search for JAV star names online
 
 V0.81
-- Upgraded: Shortened the loading time by implementing staggered thumbnail image loading.
+- Upgraded: Reduced loading time by implementing staggered thumbnail image loading
 
 V0.82
-- Bugfix: Staggered thumbnail images did not load fully.
+- Bugfix: Staggered thumbnail images did not fully load
 
 V0.83
-- Upgraded: In scan files dialog widget, it now shows the progress.
-- Changed: After scan file or internet search, now reload data from scratch.
+- Upgraded: Progress is now shown in the file scan dialog widget
+- Changed: After file scan or internet search, data is reloaded from scratch
 
 V0.84
-- Added: User can select a data card by clicking or w, a, s, d key.
-- Added: Data card now selectable.
-    User can select a data card by clicking or using w, a, s, d keys.
-    Press the space bar to play the video.
-    The selection is saved and reinstated when the program starts next time.
+- Added: Users can select a data card by clicking or using the w, a, s, d keys
+- Added: Data cards are now selectable
+- Users can select a data card by clicking or using the w, a, s, d keys
+- Press the space bar to play the video
+- Selection is saved and reinstated when the program is restarted
 
 V0.85
-- Added: My rating system. User can give 0 ~ 5 stars to each video. Sorting based on my rating.
-- Added: Delete a video by Del key.
+- Added: Rating system allowing users to give 0 to 5 stars to each video, with sorting based on ratings
+- Added: Ability to delete a video using the Del key
 
 V0.86
-- Fixed: It didn't add prod codes to prod_db during scan files
+- Fixed: Issue with adding production codes to prod_db during file scan
 
 V0.871
-- Fixed: Rating related error.
+- Fixed: Rating-related error
 
 V0.872
-- Changed: File setting dialog box now has scan file feature.
+- Changed: File settings dialog box now includes the file scan feature
 
 V0.882
-- Added: Users can customize displayed titles.
-- Added: Tabs for movie, star, genre page (genre page is not implemented yet).
+- Added: Customizable displayed titles
+- Added: Tabs for movie, star, and genre pages (genre page not yet implemented)
 - Added: Support for Caribbeancom-100000-000
-- Added: prod_code is auto generated for videos without prod_code in its file name.
-- Fixed: Rating changes not properly performed sometimes.
+- Added: Auto-generation of prod_code for videos without a prod_code in the file name
+- Fixed: Inconsistent application of rating changes
 
-V0.883: Released.
-- Fixed: Some image (RGBA) couldn't be cropped and stop functioning in scan poster.
+V0.883
+- Fixed: Issue with some images (RGBA) causing scan poster function to stop
 
 V0.884
-- Enhanced: Data cards loading time is shortened, consuming less memory.
+- Enhanced: Shortened data card loading time and reduced memory usage
 
 V0.885
-- Added: User can input exclude string for not to web scrap in internet search.
-- Fixed: Data card loading related bugs fixed and enhanced.
+- Added: Option for users to input strings to exclude from web scraping during internet search
+- Fixed: Bugs related to data card loading and enhanced performance
+
+V0.886
+- Enhanced: Data cards are now displayed from the top to reduce flickering
+- Fixed: Title settings not applied when searching and displaying new data cards
