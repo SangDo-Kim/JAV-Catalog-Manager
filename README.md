@@ -1,4 +1,4 @@
-# JAV Catalog Manager V0.886, UI in Korean This Python program creates a list of JAV (Japanese Adult Video) files on
+# JAV Catalog Manager V1.0, UI in Korean This Python program creates a list of JAV (Japanese Adult Video) files on
 local hard drives. It allows users to search for video files, play them, and retrieve JAV title information (poster
 images and star names) from the Internet.
 이 Python 프로그램은 로컬 하드 드라이브에 있는 JAV(일본 성인 비디오) 파일 목록을 생성합니다. 사용자는 영상 검색,
@@ -70,3 +70,26 @@ V0.885
 V0.886
 - Enhanced: Data cards are now displayed from the top to reduce flickering
 - Fixed: Title settings not applied when searching and displaying new data cards
+- Fixed: Prevent the program initialize on genre tab. Genre tab is not implemented.
+
+V1.0
+- Added: Genre view
+- Added: File name change feature
+- Fixed: When initial program run, folder setting stopped in the middle of run.
+
+JCM_main.py, class MainWindow attributes:
+    merged_df (pd.DataFrame): Data frame containing information about movies from file_db, prod_db, and others.
+        star_df and genre_df are concatenated to merged_df.
+    star_df (pd.DataFrame): Data frame containing information about stars, merged from star_db and prod_star_db.
+    genre_df (pd.DataFrame): Data frame containing information about genres, merged from genre_db and prod_genre_db.
+    display_df (pd.DataFrame): Subset of merged_df used for displaying the data cards.
+    display_prev_df (pd.DataFrame): Data frame to track the previous state of display_df for detecting changes.
+    display_diff_df (pd.DataFrame): Data frame to track the differences between display_df and display_prev_df.
+
+    data_cards (dict): Dictionary to hold the created data cards.
+        self.data_cards[index] = DataCard instance.
+        Here, index is an integer unified throughout merged_df, display_df, and most of DataFrames.
+    grid_map (dict): Dictionary to hold column and row info of currently displayed data cards.
+        self.grid_map[(row_number, column)] = DataCard_instance.index
+
+    tab (str): Current tab (movie, star, genre).
