@@ -1,4 +1,4 @@
-# JAV Catalog Manager V1.0, UI in Korean This Python program creates a list of JAV (Japanese Adult Video) files on
+# JAV Catalog Manager V1.1, UI in Korean This Python program creates a list of JAV (Japanese Adult Video) files on
 local hard drives. It allows users to search for video files, play them, and retrieve JAV title information (poster
 images and star names) from the Internet.
 이 Python 프로그램은 로컬 하드 드라이브에 있는 JAV(일본 성인 비디오) 파일 목록을 생성합니다. 사용자는 영상 검색,
@@ -77,6 +77,13 @@ V1.0
 - Added: File name change feature
 - Fixed: When initial program run, folder setting stopped in the middle of run.
 
+V1.01
+- Fixed: File name change was not done correctly for ZZZ prod_code.
+
+V1.1
+- Added: Data cards are now set to landscape. Set in [Settings and shortcut].
+- Added: Instead of default media player, users can now specify one.
+
 JCM_main.py, class MainWindow attributes:
     merged_df (pd.DataFrame): Data frame containing information about movies from file_db, prod_db, and others.
         star_df and genre_df are concatenated to merged_df.
@@ -91,5 +98,13 @@ JCM_main.py, class MainWindow attributes:
         Here, index is an integer unified throughout merged_df, display_df, and most of DataFrames.
     grid_map (dict): Dictionary to hold column and row info of currently displayed data cards.
         self.grid_map[(row_number, column)] = DataCard_instance.index
-
     tab (str): Current tab (movie, star, genre).
+
+    Related DataFrames (each have its independent modules):
+    file_db.df: unique column: full_file_path, join column: prod_code
+    prod_db.df: unique column: prod_code
+    star_db.df: unique column: star_id
+    prod_star_db.df: Join table for prod_db and star_db.
+    genre_db.df: unique column: genre_id
+    prod_genre_db.df: Join table for prod_db and genre_db
+    * Note that index of the xxxx_db.df are different from the index of merged_df, display_df, data_cards and so on.
