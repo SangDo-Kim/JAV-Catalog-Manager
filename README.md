@@ -1,4 +1,4 @@
-# JAV Catalog Manager V1.11, UI in Korean This Python program creates a list of JAV (Japanese Adult Video) files on
+# JAV Catalog Manager V1.2, UI in Korean This Python program creates a list of JAV (Japanese Adult Video) files on
 local hard drives. It allows users to search for video files, play them, and retrieve JAV title information (poster
 images and star names) from the Internet.
 JAV 카탈로그 매니저, 야동 관리 프로그램
@@ -6,7 +6,7 @@ JAV 카탈로그 매니저, 야동 관리 프로그램
 영상 재생, 인터넷에서 JAV 타이틀 정보(포스터 이미지 및 출연자 이름)를 가져올 수 있습니다.
 
 V0.7
-- Initial creation
+- Initial creation_
 
 V0.73
 - Upgraded: Folder scanning feature
@@ -88,27 +88,50 @@ V1.1
 V1.11
 - Added: Theme selection: Beige, Dark
 
+V1.12
+- Added: Sage's Moment - Press the Z key to play a soothing music (supports web URL or local file path).
+- Changed: Top left logo and title color updated to a grayish shade to ensure visibility in both light and dark themes.
+
+V1.2
+- Enhanced: Tab switching is now significantly faster. Each tab has its own dedicated data sets and attributes,
+    eliminating the need for reallocation.
+- Added: New theme, Black.
+
 JCM_main.py, class MainWindow attributes:
     merged_df (pd.DataFrame): Data frame containing information about movies from file_db, prod_db, and others.
         star_df and genre_df are concatenated to merged_df.
     star_df (pd.DataFrame): Data frame containing information about stars, merged from star_db and prod_star_db.
     genre_df (pd.DataFrame): Data frame containing information about genres, merged from genre_db and prod_genre_db.
-    display_df (pd.DataFrame): Subset of merged_df used for displaying the data cards.
-    display_prev_df (pd.DataFrame): Data frame to track the previous state of display_df for detecting changes.
-    display_diff_df (pd.DataFrame): Data frame to track the differences between display_df and display_prev_df.
+
+    display_df_movie (pd.DataFrame): Data frame for displaying movie information.
+    display_df_star (pd.DataFrame): Data frame for displaying star information.
+    display_df_genre (pd.DataFrame): Data frame for displaying genre information.
+
+    display_df_prev_movie (pd.DataFrame): Previous state of the movie display data frame.
+    display_df_prev_star (pd.DataFrame): Previous state of the star display data frame.
+    display_df_prev_genre (pd.DataFrame): Previous state of the genre display data frame.
+
+    display_df_diff_movie (pd.DataFrame): Differences in the movie display data frame from the previous state.
+    display_df_diff_star (pd.DataFrame): Differences in the star display data frame from the previous state.
+    display_df_diff_genre (pd.DataFrame): Differences in the genre display data frame from the previous state.
 
     data_cards (dict): Dictionary to hold the created data cards.
-        self.data_cards[index] = DataCard instance.
-        Here, index is an integer unified throughout merged_df, display_df, and most of DataFrames.
-    grid_map (dict): Dictionary to hold column and row info of currently displayed data cards.
-        self.grid_map[(row_number, column)] = DataCard_instance.index
+        self.data_cards[index_label] = DataCard_instance
+        Here, index_label is an integer unified throughout merged_df, display_df, and most of DataFrames in MainWindow.
+
+    grid_map_movie (dict): Grid map for movies.
+        self.grid_map_movie[(row_number, column)] = DataCard_instance.index
+    grid_map_star (dict): Grid map for stars.
+    grid_map_genre (dict): Grid map for genres.
+
     tab (str): Current tab (movie, star, genre).
 
     Related DataFrames (each have its independent modules):
-    file_db.df: unique column: full_file_path, join column: prod_code
-    prod_db.df: unique column: prod_code
-    star_db.df: unique column: star_id
-    prod_star_db.df: Join table for prod_db and star_db.
-    genre_db.df: unique column: genre_id
-    prod_genre_db.df: Join table for prod_db and genre_db
-    * Note that index of the xxxx_db.df are different from the index of merged_df, display_df, data_cards and so on.
+        file_db.df: unique column: full_file_path, join column: prod_code
+        prod_db.df: unique column: prod_code
+        star_db.df: unique column: star_id
+        prod_star_db.df: Join table for prod_db and star_db.
+        genre_db.df: unique column: genre_id
+        prod_genre_db.df: Join table for prod_db and genre_db
+    * Note that index labels of the xxxx_db.df are different from the index labels of merged_df, display_df, data_cards
+        and most of DataFrames in MainWindow.
