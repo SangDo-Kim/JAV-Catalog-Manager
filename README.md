@@ -1,9 +1,10 @@
-# JAV Catalog Manager V1.2, UI in Korean This Python program creates a list of JAV (Japanese Adult Video) files on
-local hard drives. It allows users to search for video files, play them, and retrieve JAV title information (poster
-images and star names) from the Internet.
+# JAV Catalog Manager V1.3, UI in Korean
+This Python program creates a list of JAV (Japanese Adult Video) files on local hard drives.
+It allows users to search for video files, play them, and retrieve JAV title information (poster images and star names)
+from the Internet.
 JAV 카탈로그 매니저, 야동 관리 프로그램
-이 Python 프로그램은 로컬 하드 드라이브에 있는 JAV(일본 성인 비디오) 파일 목록을 생성합니다. 사용자는 영상 검색,
-영상 재생, 인터넷에서 JAV 타이틀 정보(포스터 이미지 및 출연자 이름)를 가져올 수 있습니다.
+이 Python 프로그램은 로컬 하드 드라이브에 있는 JAV(일본 성인 비디오) 파일 목록을 생성합니다.
+사용자는 영상 검색, 영상 재생, 인터넷에서 JAV 타이틀 정보(포스터 이미지 및 출연자 이름)를 가져올 수 있습니다.
 
 V0.7
 - Initial creation_
@@ -89,7 +90,7 @@ V1.11
 - Added: Theme selection: Beige, Dark
 
 V1.12
-- Added: Sage's Moment - Press the Z key to play a soothing music (supports web URL or local file path).
+- Added: Sage's Moment - Press the Z key to play soothing music (supports web URL or local file path).
 - Changed: Top left logo and title color updated to a grayish shade to ensure visibility in both light and dark themes.
 
 V1.2
@@ -97,41 +98,61 @@ V1.2
     eliminating the need for reallocation.
 - Added: New theme, Black.
 
-JCM_main.py, class MainWindow attributes:
+V1.21
+- Changed: Refactored codes to handle tab related attributes with dictionaries.
+
+V1.3
+- Added: Deleted movie information is now preserved and can be shown according to user settings.
+- Fixed: Files without extension were falsely recognized as movie files when Refresh files.
+
+JCM_main.py
+This module defines the `MainWindow` class, which serves as the main application window for managing and displaying
+information about movies, stars, and genres. The data is loaded from various databases, processed, and then displayed
+using a grid layout of data cards.
+
+Attributes:
     merged_df (pd.DataFrame): Data frame containing information about movies from file_db, prod_db, and others.
         star_df and genre_df are concatenated to merged_df.
     star_df (pd.DataFrame): Data frame containing information about stars, merged from star_db and prod_star_db.
     genre_df (pd.DataFrame): Data frame containing information about genres, merged from genre_db and prod_genre_db.
 
-    display_df_movie (pd.DataFrame): Data frame for displaying movie information.
-    display_df_star (pd.DataFrame): Data frame for displaying star information.
-    display_df_genre (pd.DataFrame): Data frame for displaying genre information.
+    display_df_dict (dict): Dictionary containing data frames for displaying information.
+        Example usage:
+            display_df_dict[Cons.movie]
+            display_df_dict[self.tab]
+            Here, self.tab can be "movie", "star" or "genre", automatically assigned on tab switch.
 
-    display_df_prev_movie (pd.DataFrame): Previous state of the movie display data frame.
-    display_df_prev_star (pd.DataFrame): Previous state of the star display data frame.
-    display_df_prev_genre (pd.DataFrame): Previous state of the genre display data frame.
+    display_df_prev_dict (dict): Dictionary containing previous states of the display data frames.
+        Example usage:
+            display_df_prev_dict[Cons.movie]
+            display_df_prev_dict[Cons.star]
+            display_df_prev_dict[Cons.genre]
 
-    display_df_diff_movie (pd.DataFrame): Differences in the movie display data frame from the previous state.
-    display_df_diff_star (pd.DataFrame): Differences in the star display data frame from the previous state.
-    display_df_diff_genre (pd.DataFrame): Differences in the genre display data frame from the previous state.
+    display_df_diff_dict (dict): Dictionary containing data frames for differences in the display data frames
+        from their previous states.
+        Example usage:
+            display_df_diff_dict[Cons.movie]
+            display_df_diff_dict[Cons.star]
+            display_df_diff_dict[Cons.genre]
 
     data_cards (dict): Dictionary to hold the created data cards.
-        self.data_cards[index_label] = DataCard_instance
-        Here, index_label is an integer unified throughout merged_df, display_df, and most of DataFrames in MainWindow.
+        Example usage:
+            self.data_cards[index_label] = DataCard_instance
+        Here, index_label is an integer unified throughout merged_df, display_df_dict,
+            and most of DataFrames in MainWindow.
 
-    grid_map_movie (dict): Grid map for movies.
-        self.grid_map_movie[(row_number, column)] = DataCard_instance.index
-    grid_map_star (dict): Grid map for stars.
-    grid_map_genre (dict): Grid map for genres.
+    grid_map_dict (dict): Dictionary to hold grid maps for movies, stars, and genres.
+        Example usage:
+            self.grid_map_dict[Cons.movie][(row_number, column)] = DataCard_instance.index
 
     tab (str): Current tab (movie, star, genre).
 
-    Related DataFrames (each have its independent modules):
-        file_db.df: unique column: full_file_path, join column: prod_code
-        prod_db.df: unique column: prod_code
-        star_db.df: unique column: star_id
-        prod_star_db.df: Join table for prod_db and star_db.
-        genre_db.df: unique column: genre_id
-        prod_genre_db.df: Join table for prod_db and genre_db
+Related DataFrames (each have its independent modules):
+    file_db.df: unique column: full_file_path, join column: prod_code
+    prod_db.df: unique column: prod_code
+    star_db.df: unique column: star_id
+    prod_star_db.df: Join table for prod_db and star_db.
+    genre_db.df: unique column: genre_id
+    prod_genre_db.df: Join table for prod_db and genre_db
     * Note that index labels of the xxxx_db.df are different from the index labels of merged_df, display_df, data_cards
-        and most of DataFrames in MainWindow.
+    and most of DataFrames in MainWindow.
