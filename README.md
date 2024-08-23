@@ -1,4 +1,4 @@
-# JAV Catalog Manager V1.3, UI in Korean
+# JAV Catalog Manager V1.31, UI in Korean
 This Python program creates a list of JAV (Japanese Adult Video) files on local hard drives.
 It allows users to search for video files, play them, and retrieve JAV title information (poster images and star names)
 from the Internet.
@@ -104,6 +104,9 @@ V1.21
 V1.3
 - Added: Deleted movie information is now preserved and can be shown according to user settings.
 - Fixed: Files without extension were falsely recognized as movie files when Refresh files.
+
+V1.31
+- Added: Random play button
 
 JCM_main.py
 This module defines the `MainWindow` class, which serves as the main application window for managing and displaying
