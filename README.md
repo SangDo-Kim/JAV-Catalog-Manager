@@ -108,6 +108,10 @@ V1.3
 V1.31
 - Added: Random play button
 
+V1.32
+- Fixed: JAV star names are not searched due to recent policy change in Google UK.
+    Now users need to log in Google.com and certify adult to search, then run this program to get star names.
+
 JCM_main.py
 This module defines the `MainWindow` class, which serves as the main application window for managing and displaying
 information about movies, stars, and genres. The data is loaded from various databases, processed, and then displayed
