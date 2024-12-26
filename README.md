@@ -1,4 +1,4 @@
-# JAV Catalog Manager V1.31, UI in Korean
+# JAV Catalog Manager V1.4, UI in Korean
 This Python program creates a list of JAV (Japanese Adult Video) files on local hard drives.
 It allows users to search for video files, play them, and retrieve JAV title information (poster images and star names)
 from the Internet.
@@ -112,12 +112,36 @@ V1.32
 - Fixed: JAV star names are not searched due to recent policy change in Google UK.
     Now users need to log in Google.com and certify adult to search, then run this program to get star names.
 
-JCM_main.py
-This module defines the `MainWindow` class, which serves as the main application window for managing and displaying
-information about movies, stars, and genres. The data is loaded from various databases, processed, and then displayed
-using a grid layout of data cards.
+V1.4
+- Added: Page System for Optimized Data Card Loading
+    Implemented a page system to load a limited number of data cards at a time,
+    instead of loading all cards at once.
+    This improvement significantly enhances performance, especially when handling large datasets with hundreds
+    of data cards.
+    UI Enhancements in JCM_main_ui.py: Users can now navigate through pages to view additional data cards:
+    QLabel: label_page_total_movie displays the total number of pages.
+    QLineEdit: lineEdit_page_current_movie allows users to type in a page number.
+    QPushButton: pushButton_page_next_movie and pushButton_page_prev_movie enable navigation to the next and
+    previous pages, respectively.
+    These same UI components exist for the star and genre sections, with the respective _star and _genre postfixes
+    (e.g., label_page_total_star, pushButton_page_next_star, etc.).
+    Related Configuration: The page_size variable in JCM_config.py controls the number of data cards displayed per page.
 
-Attributes:
+Important files:
+JCM_main.py
+    This module defines the MainWindow class, which serves as the main application window for managing and displaying
+    information about movies, stars, and genres. The data is loaded from various databases, processed,
+    and then displayed using a grid layout of data cards.
+
+JCM_main_ui.py - PySide6 auto-generated UI elements.
+JCM_resources_rc.py - PySide6 auto-generated resource file for icons and images for the program.
+JCM_config.py - class JCMConfig. Handles configuration data.
+data_card.py - class DataCard(QWidget). Data cards which are a series of widgets with titles, pictures, buttons.
+search_internet.py - class InternetSearch(QDialog, Ui_Dialog). Search internet and get Poster image and make thumbnails,
+    and also get star name using given JAV product code.
+
+
+Important attributes:
     merged_df (pd.DataFrame): Data frame containing information about movies from file_db, prod_db, and others.
         star_df and genre_df are concatenated to merged_df.
     star_df (pd.DataFrame): Data frame containing information about stars, merged from star_db and prod_star_db.
@@ -128,19 +152,6 @@ Attributes:
             display_df_dict[Cons.movie]
             display_df_dict[self.tab]
             Here, self.tab can be "movie", "star" or "genre", automatically assigned on tab switch.
-
-    display_df_prev_dict (dict): Dictionary containing previous states of the display data frames.
-        Example usage:
-            display_df_prev_dict[Cons.movie]
-            display_df_prev_dict[Cons.star]
-            display_df_prev_dict[Cons.genre]
-
-    display_df_diff_dict (dict): Dictionary containing data frames for differences in the display data frames
-        from their previous states.
-        Example usage:
-            display_df_diff_dict[Cons.movie]
-            display_df_diff_dict[Cons.star]
-            display_df_diff_dict[Cons.genre]
 
     data_cards (dict): Dictionary to hold the created data cards.
         Example usage:
@@ -161,5 +172,5 @@ Related DataFrames (each have its independent modules):
     prod_star_db.df: Join table for prod_db and star_db.
     genre_db.df: unique column: genre_id
     prod_genre_db.df: Join table for prod_db and genre_db
-    * Note that index labels of the xxxx_db.df are different from the index labels of merged_df, display_df, data_cards
+* Note that index labels of the xxxx_db.df are different from the index labels of merged_df, display_df, data_cards
     and most of DataFrames in MainWindow.
