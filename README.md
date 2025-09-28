@@ -6,6 +6,15 @@ JAV 카탈로그 매니저, 야동 관리 프로그램
 이 Python 프로그램은 로컬 하드 드라이브에 있는 JAV(일본 성인 비디오) 파일 목록을 생성합니다.
 사용자는 영상 검색, 영상 재생, 인터넷에서 JAV 타이틀 정보(포스터 이미지 및 출연자 이름)를 가져올 수 있습니다.
 
+**Legal Notice**
+This program is a tool for managing (e.g., displaying, deleting) video files that users already own locally. Poster images are downloaded from publicly available internet servers and saved to the user's PC.
+Downloaded poster files are strictly limited to personal use and must not be redistributed or shared further. All legal responsibility for the use of this program rests with the user.
+This program is provided free of charge and may only be used for non-commercial, personal purposes.
+**법적 고지**
+이 프로그램은 사용자가 이미 소장한 로컬 영상 파일을 관리(예: 표시, 삭제 등)하기 위한 도구이며, 포스터 이미지는 공개된 인터넷 서버에서 다운로드되어 사용자의 PC에 저장됩니다.
+다운로드된 포스터 파일은 개인적 이용에 한정되며, 재배포나 2차 공유는 금지됩니다. 모든 사용 행위에 대한 법적 책임은 사용자 본인에게 있습니다.
+이 프로그램은 무료로 제공되며, 비상업적 개인 사용 용도로만 사용할 수 있습니다.
+
 V0.7
 - Initial creation_
 
