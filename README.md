@@ -148,9 +148,6 @@ V1.5
 V1.51
 - Fixed: Updated poster scraping sources to active ones.
 - Changed: Show module number on success instead of at start.
-
-V1.52
-– Added: Legal notice before starting poster download.
   
 Important files:
 JCM_main.py
